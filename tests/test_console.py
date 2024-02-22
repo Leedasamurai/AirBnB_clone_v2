@@ -15,9 +15,6 @@ class TestHBNBCommand(unittest.TestCase):
     def setUpClass(cls):
         """HBNBCommand testing setup.
 
-        Temporarily rename any existing file.json.
-        Reset FileStorage objects dictionary.
-        Create an instance of the command interpreter.
         """
         try:
             os.rename("file.json", "tmp")

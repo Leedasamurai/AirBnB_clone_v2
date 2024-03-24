@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>HBNB</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles/3-header.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles/3-footer.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles/4-common.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles/6-filters.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles/8-places.css') }}">
+	</head>
+	<body>
+		<header class="header" id="header">
+			<nav>
+				<div class="logo_container">
+					<a href="http://0.0.0.0:5000/hbnb_static/index.html"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="HBNB_Logo" class="logo"></a>
+				</div>
+				<div class="dropdown">
+					<button class="dropbtn">Places</button>
+					<div class="dropdown-content">
+						<a href="#">Home</a>
+						<a href="#">All</a>
+						<a href="#">Search</a>
+					</div>
+				</div>
+				<div class="dropdown">
+					<button class="dropbtn">States</button>
+					<div class="dropdown-content">
+						{% for state in states %}
+						<a href="#">{{ state.name }}</a>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="dropdown">
+					<button class="dropbtn">Amenities</button>
+					<div class="dropdown-content">
+						{% for amenity in amenities %}
+						<a href="#">{{ amenity.name }}</a>
+						{% endfor %}
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<div class="places_container">
+			<section class="places">
+				{% for place in places %}
+				<article class="place">
+					<div class="place_img">
+						<img src="{{ url_for('static', filename='images/' + place.image) }}" alt="Place Image">
+					</div>
+					<div class="place_name">{{ place.name }}</div>
+					<div class="place_price_by_night">${{ place.price_by_night }}</div>
+					<div class="place_description">{{ place.description }}</div>
+				</article>
+				{% endfor %}
+			</section>
+		</div>
+
+		<footer class="footer">
+			<p class="footer_text">Footer Text</p>
+		</footer>
+	</body>
+</html>
+
